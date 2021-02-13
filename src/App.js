@@ -1,9 +1,10 @@
 import './App.css';
 import DonutChartCard from './Components/DonutChartCard';
+import Table from './Components/Table';
 
 function App() {
   return (
-    <div  class="container" >
+    <div class="container" >
       <div class="row">
 
         {/* Left part */}
@@ -12,10 +13,10 @@ function App() {
           <p>Let's all pray to make our Earth Covid-19
           free soon, Stay Safe and do TheLocate
            </p>
-
-           <div>
-             <DonutChartCard/>
-           </div>
+           
+            <DonutChartCard />
+            <Table />
+     
         </div>
 
         {/* Right part */}
