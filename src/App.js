@@ -1,9 +1,8 @@
 import './App.css';
 import React, { Component } from 'react'
-import DonutChartCard from './Components/DonutChartCard';
-import Table from './Components/Table';
+
 import DonutChart from 'react-donut-chart';
-import LineChart from 'react-linechart';
+import {Line} from 'react-chartjs-2'
 
 import axios from 'axios';
 
@@ -34,7 +33,7 @@ export class App extends Component {
             total_cases: data[0]
 
           });
-          console.log(this.state.total_cases)
+          // console.log(this.state.total_cases)
         })
 
     }
@@ -49,74 +48,75 @@ export class App extends Component {
   }
 
   currentRow = (a, b, c, d, s) => {
-     document.getElementById("confirmed").innerHTML = a;
-     document.getElementById("active").innerHTML = b;
-     document.getElementById("recovered").innerHTML = c;
-     document.getElementById("deceased").innerHTML = d;
-     document.getElementById("current_state").innerHTML = s
+    document.getElementById("confirmed").innerHTML = a;
+    document.getElementById("active").innerHTML = b;
+    document.getElementById("recovered").innerHTML = c;
+    document.getElementById("deceased").innerHTML = d;
+    document.getElementById("current_state").innerHTML = s
+
+    document.getElementById("tem__confirmed__cases").innerHTML = a;
+    document.getElementById("active__first").innerHTML = b;
+    document.getElementById("deceased__first").innerHTML = d;
+    document.getElementById("recovered__first").innerHTML = c;
+   
+    
+
   }
 
   render() {
-    let active = 7198;
-    let deceased = 617
-    let recovered = 24832;
-    let total = 382920
-
-    const data = [
-      {
-        color: "steelblue",
-        points: [{ x: 1, y: 2 }, { x: 3, y: 5 }, { x: 7, y: -3 }, { x: 9, y: 8 }]
-      }
-    ];
-    console.log(this.state.state_data)
+    
+    const data = {
+      
+      datasets:[
+        {
+          
+          data: [100,234,6,3,6]
+        },
+        {
+          
+          data: [13450,2434,64,343,645]
+        },
+        {
+          
+          data: [100,4534,6,345,6]
+        }
+      ]
+    }
+ 
+    // console.log(this.state.state_data)
     return (
       <div class="container" >
         <div class="row">
 
           {/* Left part */}
           <div class="col-sm-12 col-md-6">
+          <br/>
             <h3>INDIA COVIE-19 Tracker</h3>
             <p>Let's all pray to make our Earth Covid-19
             free soon, Stay Safe and do TheLocate
            </p>
 
             <div className="donut__card container row">
-              <div class="col-md-7 col-sm-12" >
-                <DonutChart
-                  data={[{
-                    label: 'Active',
-                    value: active,
+              <div className="top__outer__div col-md-8 col-sm-12" >
+                <div className="mid__div">
 
-                  },
-                  {
-                    label: 'Deceased',
-                    value: deceased,
-
-                  },
-                  {
-                    label: 'Recovered',
-                    value: recovered,
-
-                  },
-
-
-                  ]}
-                  arrayOf={'#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4caf50', '#8bc34a', '#cddc39', '#ffeb3b', '#ffc107', '#ff9800', '#ff5722', '#795548', '#607d8b'}
-                  height={130}
-                  width={200}
-                  emptyColor={'#ffffff'}
-
-                  outerRadius={0.75}
-                />
+                  <div className="outer__circle">
+                    <div className="inner__circle">
+                      <h5 id="tem__confirmed__cases">{this.state.total_cases.confirmed}</h5>
+                      <p>Confirmed</p>
+                    </div>
+                  </div>
+                  <div className="top__outer__div__mid">
+                    <div className="first"><div className="active__dot"></div>&nbsp;<div >active:</div><div id="active__first">{this.state.total_cases.active}</div></div>
+                    <div className="second"><div className="decease__dot"></div>&nbsp;<div>decease:</div><div id="deceased__first">{this.state.total_cases.deaths}</div></div>
+                    <div className="third"><div className="recovered__dot"></div>&nbsp;<div>recovered:</div><div id="recovered__first">{this.state.total_cases.recovered}</div></div>
+                  </div>
+                </div>
               </div>
 
-              <div class="col-md-5 col-sm-12" >
-                <LineChart
-                  width={200}
-                  height={150}
-                  data={data}
-                />
 
+              <div className="col-md-4 col-sm-12" >
+                 <Line data={data} />
               </div>
             </div>
 
@@ -143,10 +143,11 @@ export class App extends Component {
           </div>
 
           {/* Right part */}
-          <div class="col-sm-12 col-md-6">
+          <div class="col-sm-12 col-md-6"> <br/>
             <h3>INDIA MAP</h3>
             <p> HOVER OVER A STATE FOR MORE DETAILS
            </p>
+            <br />
             <div className="map__card container">
               <div className="total___cases__card row">
                 <div className="confirmed col-md-3 col-sm-6">
@@ -184,9 +185,9 @@ export class App extends Component {
               </div>
 
               <div className="last__updated">
-              <div id="current_state" className="current__state">
-                 {this.state.current_state}
-              </div>
+                <div id="current_state" className="current__state">
+                  {this.state.current_state}
+                </div>
                 <div>
                   <div className="first">LAST UPDATED</div>
                   <div className="second">{this.state.total_cases.lastupdatedtime}</div>
