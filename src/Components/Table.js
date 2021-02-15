@@ -36,6 +36,10 @@ export class Table extends Component {
 
     }
 
+    currentRow=(a,b,c,d)=>{
+        alert(a)
+    }
+
     render() {
 
         const state_data = this.state.state_data;
@@ -50,7 +54,7 @@ export class Table extends Component {
                     <div>DECEASED</div>
                 </div>
                 {state_data.map((data, index) => (
-                    <div className="table__container container row ">
+                    <div id="table__container" className="table__container container row " onMouseOver={()=>{this.currentRow(data.confirmed,data.active, data.recovered,data.deaths)}}>
                         <div>{data.state}</div>
                         <div>{data.confirmed}</div>
                         <div>{data.active}</div>

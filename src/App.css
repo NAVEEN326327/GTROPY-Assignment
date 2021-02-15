@@ -40,3 +40,109 @@
 .App{
   background-color:#234242;
 }
+
+.table__outer__container{
+  background-color: white;
+  border-radius: 20px;
+  margin-top: 4%;
+  overflow: scroll;
+   height: 70vh;
+}
+
+.table__container{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2%;
+
+
+}
+
+.table__container div{
+  width: 80px;
+  /* background-color: red; */
+  font-size: 0.7rem;
+  font-weight: bolder;
+  
+}
+
+.table__container_heading div{
+  color:orange;
+  font-weight: bolder;
+}
+
+.donut__card{
+  background-color: white;
+  border-radius: 20px;
+}
+
+.map__card{
+  background-color: white;
+  border-radius: 20px;
+}
+
+.total___cases__card{
+ padding: 10px;
+
+}
+
+.total___cases__card>div{
+  border-radius: 5px;
+ 
+  
+ }
+ 
+
+.confirmed{
+  background: rgba(207, 8, 8, 0.3);
+  font-weight: bolder;
+  color: red;
+  opacity: 1;
+ 
+}
+
+.active{
+  background: rgba(129, 189, 207, 0.3);
+  font-weight: bolder;
+  color: blue;
+   opacity: 1;
+}
+
+.recovered{
+  background: rgba(8, 207, 58, 0.3);
+  font-weight: bolder;
+  color: green;
+  opacity: 1;
+}
+
+.deceased{
+  background: rgba(192, 188, 192, 0.3);
+  font-weight: bolder;
+  color: gray;
+  opacity: 1;
+}
+
+.last__updated{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   text-align: right;
+
+}
+.last__updated .first {
+  color: green;
+  font-weight: bolder;
+  opacity: 0.5;
+}
+
+.last__updated .second {
+  color: green;
+  font-weight: bolder;
+
+}
+
+.current__state{
+  color: #a8324a;
+  font-weight: bolder;
+}
